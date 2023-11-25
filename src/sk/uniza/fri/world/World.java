@@ -93,9 +93,6 @@ public class World {
         this.navigationalText.zobraz();
         this.actionsText.zobraz();
         this.textTribeOnMove.zobraz();
-
-        System.out.println("Cesta k hradu");
-        //System.out.println(this.getClass().getResource("pictures/buildings/castle_blue.png").getPath());
     } //end of constructor
 
     public Area[][] getLandscape() {
@@ -561,7 +558,7 @@ public class World {
                 this.initializeAttacking(0);
             }
         } else {
-            this.navigationalText.setText("You can't attak there it is too far");
+            this.navigationalText.setText("You can't attack there, it is too far");
             this.initializeAttacking(0);
         }
         this.initializeAttacking(0);
@@ -622,6 +619,10 @@ public class World {
         return inhabitant;
     }
 
+    public Tribe getTribeOnMove() {
+        return this.tribeOnMove;
+    }
+
     //Nastavi kmen na tahu
     public void setTribeOnMove() {
         if (this.tribeOnMove == this.farmTribe) {
@@ -635,7 +636,7 @@ public class World {
         }
     }
 
-    //Metoda vymeni akz=y kmen je na tahu
+    //Metoda vymeni aky kmen je na tahu
     public void swapTribeOnMove() {
         if (JOptionPane.showConfirmDialog(this.canvas.getFrame(),
                 "Do you really want to end your move", "Ending move",
@@ -699,7 +700,7 @@ public class World {
                     World.this.initializeRecruiment(1);
                     break;
                 case KeyEvent.VK_D:
-                    initializeDestroying(World.this.clickedObject);
+                    World.this.initializeDestroying(World.this.clickedObject);
                     break;
                 default:
                     break;
